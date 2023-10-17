@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <button class="view-high-scores">View High Scores</button>
+            <div id="timer">Time Remaining: 60 seconds</div>
+        </nav>
+    </header>
+    <main>
+        
+        <div>
+            <h1>Coding Quiz!</h1>
+            <p>Answer as many questions correctly as possible within the time limit displayed in the top right. When the timer ends, enter your initials and see where you rank on the leaderboard!</p>
+            <p>Be careful though! If you get a question wrong, you will lose 10 seconds off the timer!</p>
+            <button>Start Quiz</button>
+        </div>
+        
+        <div class="question-container" id="question-container">
+            <div id="question"></div>
+            <div id="options"></div>
+            <div id="result"></div>
+        </div>
+
+    </main>
+
+
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>
