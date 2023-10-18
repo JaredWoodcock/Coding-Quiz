@@ -1,41 +1,45 @@
 var currentQuestionIndex = 0;
-var timer = document.getElementById('timer');
-var time = 60;
+// var timer = document.getElementById('timer');
+var timerInterval;
+var timeSeconds = 59;
 var userScore = [];
 
 var questions = [
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
     {
         question: "1",
         options: ["1", "2", "3", "4"],
-        answer: 1
+        answer: 0
     },
 ];
 
+function viewHighScores() {
+    window.location.href = "leaderboard.html"
+}
 
 function startQuiz() {
     var homePage = document.getElementById("home-page");
@@ -49,16 +53,17 @@ function startQuiz() {
 }
 
 function startTimer() {
-    var timer = setInterval(function() {
-        var seconds = time % 60;
+    var timerElement = document.getElementById("timer");
+    timerInterval = setInterval(function() {
+        var seconds = timeSeconds % 60;
 
-        timerElement.innerHTML = "Time: " + seconds.toString().padStart(2, "0");
+        timerElement.innerHTML = "Time Remaining: " + seconds.toString().padStart(2, "0") + " seconds";
 
-        if (time <= 0) {
-            clearInterval(timer);
+        if (timeSeconds <= 0) {
+            clearInterval(timerInterval);
             endQuiz();
         }
-        time--;
+        timeSeconds--;
     }, 1000)
 }
 
@@ -69,7 +74,7 @@ function showQuestion() {
     var optionsHTML = "";
 
     currentQuestion.options.forEach(function(option, index) {
-        optionsHTML += `<button oneclick="checkAnswer(${index})">${option}</button>`;
+        optionsHTML += `<button onclick="checkAnswer(${index})">${option}</button>`;
     });
 
     questionElement.innerText = currentQuestion.question;
@@ -85,7 +90,7 @@ function checkAnswer(userAnswer) {
         resultElement.innerText = "Correct Answer!";
     } else {
         resultElement.innerText = "Incorrect :("
-        time -= 10; 
+        timeSeconds -= 10; 
     }
 
     currentQuestionIndex++;
@@ -99,6 +104,7 @@ function checkAnswer(userAnswer) {
 function endQuiz() {
     var questionContainer = document.getElementById("question-container");
     var endPage = document.getElementById("end-page");
+    var timerElement = document.getElementById("timer");
 
     questionContainer.style.display = "none";
     timerElement.style.display = "none";
@@ -108,15 +114,36 @@ function endQuiz() {
 function submitScore(event) {
     event.preventDefault();
     var initials = document.getElementById("initials").value;
-    userScore.push({
-        initials: initials,
-        score: time
-    });
-
-    localStorage.setItem("userScore", JSON.stringify(userScore));
+    var score = timeSeconds;
+    var existingScores = JSON.parse(localStorage.getItem("userScore")) || [];
+    existingScores.push({initials: initials, score: score});
+    existingScores.sort((a,b) => b.score - a.score);
+    
+    localStorage.setItem("userScore", JSON.stringify(existingScores));
     redirectToLeaderboard();
 }
 
 function redirectToLeaderboard() {
     window.location.href = "leaderboard.html"
+}
+
+
+
+var highScores = JSON.parse(localStorage.getItem("userScore")) || [];
+var highScoresElement = document.getElementById("high-scores");
+var scoresHTML = "<ol>";
+
+var displayScores = highScores.slice(0,5);
+
+displayScores.sort((a,b) => b.score - a.score)
+
+for (var i = 0; i < displayScores.length; i++) {
+    scoresHTML += "<li>" + displayScores[i].initials + ": " + displayScores[i].score + " seconds" + "</li>";
+}
+scoresHTML += "</ol>";
+highScoresElement.innerHTML = scoresHTML;
+
+
+function returnToHome() {
+    window.location.href = "index.html";
 }

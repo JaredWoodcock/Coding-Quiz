@@ -11,17 +11,17 @@
 
     <header>
         <nav>
-            <button class="view-high-scores">View High Scores</button>
+            <button onclick="viewHighScores()">View High Scores</button>
             <div id="timer">Time Remaining: 60 seconds</div>
         </nav>
     </header>
     <main>
         
-        <div>
+        <div id="home-page">
             <h1>Coding Quiz!</h1>
             <p>Answer as many questions correctly as possible within the time limit displayed in the top right. When the timer ends, enter your initials and see where you rank on the leaderboard!</p>
             <p>Be careful though! If you get a question wrong, you will lose 10 seconds off the timer!</p>
-            <button oneclick="start-quiz()">Start Quiz</button>
+            <button onclick="startQuiz()">Start Quiz</button>
         </div>
         
         <div class="question-container" id="question-container">
@@ -33,8 +33,9 @@
         <div id="end-page" style="display: none;">
             <h2>Quiz Complete!</h2>
             <form onsubmit="submitScore(event)">
-                
-                <button id="submit">Submit</button>
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" required>
+                <button type="submit">Submit</button>
             </form>
         </div>
 
