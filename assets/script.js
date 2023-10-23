@@ -3,6 +3,7 @@ var timerInterval;
 var timeSeconds = 59;
 var userScore = [];
 
+// This variable contains all of the questions, along with the options and the correct answer
 var questions = [
     {
         question: "What is one of the core technologies of the World Wide Web, alongside HTML and CSS?",
@@ -31,11 +32,14 @@ var questions = [
     },
 ];
 
+// This function is tied to the View High Scores button and takes you to the leaderboard html
 function viewHighScores() {
     window.location.href = "leaderboard.html"
 }
 
 var viewHighScoresbutton = document.getElementById("view-high-scores");
+
+// This function is called when the Start Quiz button is clicked. It also calls the functions of startTimer, which starts the timer, and showQuestion, which brings you to the first question. 
 function startQuiz() {
     var homePage = document.getElementById("home-page");
     var questionContainer = document.getElementById("question-container");
@@ -48,6 +52,8 @@ function startQuiz() {
     showQuestion();
 }
 
+
+// This function starts the timer, displays it, and the if function says that if timer reaches 0, calls the endQuiz function and clears the timer. 
 function startTimer() {
     var timerElement = document.getElementById("timer");
     timerInterval = setInterval(function() {
@@ -63,11 +69,12 @@ function startTimer() {
     }, 1000)
 }
 
+// This function shows the questions and pulls from the HTML div elements. 
 function showQuestion() {
     var questionElement = document.getElementById("question");
     var optionsElement = document.getElementById("options");
     var currentQuestion = questions[currentQuestionIndex];
-    var optionsHTML = "<ul>";
+    var optionsHTML = "";
 
     currentQuestion.options.forEach(function(option, index) {
         optionsHTML += `<li><button onclick="checkAnswer(${index})">${option}</button></li>`;
@@ -78,6 +85,8 @@ function showQuestion() {
     document.getElementById("result").innerText = "";
 }
 
+
+// This is the function that checks the answer to the question, and displays the corresponding text below the options depending on the user's answer. Also, the if function checks for the amount of questions left, and if there's none left, the endQuiz function is called. 
 function checkAnswer(userAnswer) {
     var currentQuestion = questions[currentQuestionIndex];
     var resultElement = document.getElementById("result");
@@ -86,7 +95,7 @@ function checkAnswer(userAnswer) {
         resultElement.innerText = "Correct Answer!";
     } else {
         resultElement.innerText = "Incorrect :("
-        timeSeconds -= 10; 
+        timeSeconds -= 5; 
     }
 
     currentQuestionIndex++;
@@ -97,6 +106,7 @@ function checkAnswer(userAnswer) {
     }
 }
 
+// This function hides the question container and timer, stops the timer, and shows the end page, which is where initials are entered. 
 function endQuiz() {
     var questionContainer = document.getElementById("question-container");
     var endPage = document.getElementById("end-page");
@@ -109,6 +119,8 @@ function endQuiz() {
     endPage.style.display = "block";
 }
 
+
+// This function stores the initials onto the leaderboard HTML in the local storage, and also calls the redirectToLeaderboard function. 
 function submitScore(event) {
     event.preventDefault();
     var initials = document.getElementById("initials").value;
@@ -121,12 +133,14 @@ function submitScore(event) {
     redirectToLeaderboard();
 }
 
+
+// This function takes you to the leaderboard HTML. 
 function redirectToLeaderboard() {
     window.location.href = "leaderboard.html"
 }
 
 
-
+// The below code is what puts the leaderboard in a ranked order based on the results of the user's quiz. 
 var highScores = JSON.parse(localStorage.getItem("userScore")) || [];
 var highScoresElement = document.getElementById("high-scores");
 var scoresHTML = "<ol>";
@@ -141,7 +155,7 @@ for (var i = 0; i < displayScores.length; i++) {
 scoresHTML += "</ol>";
 highScoresElement.innerHTML = scoresHTML;
 
-
+//This function is tied to the Return to Home button on the leaderboards HTML, and takes you back to the main page on the index.html
 function returnToHome() {
     window.location.href = "index.html";
 }
