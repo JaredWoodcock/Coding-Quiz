@@ -1,5 +1,4 @@
 var currentQuestionIndex = 0;
-// var timer = document.getElementById('timer');
 var timerInterval;
 var timeSeconds = 59;
 var userScore = [];
@@ -68,10 +67,10 @@ function showQuestion() {
     var questionElement = document.getElementById("question");
     var optionsElement = document.getElementById("options");
     var currentQuestion = questions[currentQuestionIndex];
-    var optionsHTML = "";
+    var optionsHTML = "<ul>";
 
     currentQuestion.options.forEach(function(option, index) {
-        optionsHTML += `<button onclick="checkAnswer(${index})">${option}</button>`;
+        optionsHTML += `<li><button onclick="checkAnswer(${index})">${option}</button></li>`;
     });
 
     questionElement.innerText = currentQuestion.question;
@@ -102,6 +101,8 @@ function endQuiz() {
     var questionContainer = document.getElementById("question-container");
     var endPage = document.getElementById("end-page");
     var timerElement = document.getElementById("timer");
+
+    clearInterval(timerInterval)
 
     questionContainer.style.display = "none";
     timerElement.style.display = "none";

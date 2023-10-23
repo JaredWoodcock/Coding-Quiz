@@ -10,12 +10,17 @@ body {
 h1 {
     font-variant: small-caps;
     font-size: 400%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 20px;
+    margin-bottom: 30px;
 }
 
 header {
     background-color: red;
-    padding: 20px;
-
+    padding: 30px;
 }
 
 nav {
@@ -30,6 +35,89 @@ nav {
 
 main, p {
     text-align: center;
+    padding: 30px;
+}
+
+p {
+    font-size: 20px;
+}
+
+#home-page button {
+    font-size: 24px;
+    border-width: 10px;
+    border-radius: 8px;
+    padding: 15px 25px;
+    margin: 30px;
+    color: red;
+    font-weight: bold;
+}
+
+#home-page button:hover {
+    background-color: #f79090;
+    cursor: pointer;
+}
+
+#view-high-scores, #return-home {
+    font-size: 16px;
+    border-width: 4px;
+}
+
+#view-high-scores:hover, #return-home:hover {
+    cursor: pointer;
+}
+
+#question {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+#options ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+#options li {
+    margin: 12px 0;
+    display: flex;
+    justify-content: center;
+    padding-left: 25px;
+}
+
+#options button {
+    width: auto;
     padding: 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+}
+#options button:hover {
+    cursor: pointer;
+    background-color: #f79090;
+}
+
+#result {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#high-scores ol {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-radius: 5px;
+}
+
+#high-scores li {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.separator {
+    border: 1px solid;
+    margin: 20px;
 }
 

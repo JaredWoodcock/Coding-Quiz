@@ -17,21 +17,24 @@
     </header>
     <main>
         
-        <div id="home-page">
+        <section id="home-page">
             <h1>Coding Quiz!</h1>
-            <p>Answer as many questions correctly as possible within the time limit displayed in the top right. When the timer ends, enter your initials and see where you rank on the leaderboard!</p>
-            <p>Be careful though! If you get a question wrong, you will lose 10 seconds off the timer!</p>
+            <p class="main-page-content">Answer as many questions correctly as possible within the time limit displayed in the top right. When the timer ends, enter your initials and see where you rank on the leaderboard!</p>
+            <p class="main-page-content">Be careful though! If you get a question wrong, you will lose 10 seconds off the timer!</p>
             <button onclick="startQuiz()">Start Quiz</button>
-        </div>
+        </section>
         
         <div class="question-container" id="question-container">
             <div id="question"></div>
+            <hr class="separator">
             <div id="options"></div>
+            <hr class="separator">
             <div id="result"></div>
         </div>
 
         <div id="end-page" style="display: none;">
             <h2>Quiz Complete!</h2>
+            <hr class="separator">
             <form onsubmit="submitScore(event)">
                 <label for="initials">Enter your initials:</label>
                 <input type="text" id="initials" required>
