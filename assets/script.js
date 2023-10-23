@@ -6,34 +6,29 @@ var userScore = [];
 
 var questions = [
     {
-        question: "1",
-        options: ["1", "2", "3", "4"],
+        question: "What is one of the core technologies of the World Wide Web, alongside HTML and CSS?",
+        options: ["JavaScript", "HTML", "CSS", "The DOM"],
         answer: 0
     },
     {
-        question: "1",
-        options: ["1", "2", "3", "4"],
-        answer: 0
+        question: "In simple terms, what is JavaScript used for?",
+        options: ["Adds in all of the colors that you see on a web page", "Allows you to see all of the words on a web page", "Helps you add in all pictures to a web page", "A scripting language for creating dynamic web page content"],
+        answer: 3
     },
     {
-        question: "1",
-        options: ["1", "2", "3", "4"],
-        answer: 0
+        question: "What is the correct way to create a function in JavaScript?",
+        options: ["function = nameOfFunction() {}", "function nameOfFunction() {}", "function() = nameOfFunction {}", "function() nameOfFunction {}"],
+        answer: 1
     },
     {
-        question: "1",
-        options: ["1", "2", "3", "4"],
-        answer: 0
+        question: "Which of these is NOT a JavaScript data type?",
+        options: ["Number", "Boolean", "Word", "String"],
+        answer: 2
     },
     {
-        question: "1",
-        options: ["1", "2", "3", "4"],
-        answer: 0
-    },
-    {
-        question: "1",
-        options: ["1", "2", "3", "4"],
-        answer: 0
+        question: "Which method is used to append a child element to a parent element in the DOM in JavaScript?",
+        options: ["addElement()", "createElement()", "childAppend()", "appendChild()"],
+        answer: 3
     },
 ];
 
@@ -41,11 +36,13 @@ function viewHighScores() {
     window.location.href = "leaderboard.html"
 }
 
+var viewHighScoresbutton = document.getElementById("view-high-scores");
 function startQuiz() {
     var homePage = document.getElementById("home-page");
     var questionContainer = document.getElementById("question-container");
     
     homePage.style.display = "none";
+    viewHighScoresbutton.style.display = "none";
     questionContainer.style.display = "block"
     
     startTimer();
