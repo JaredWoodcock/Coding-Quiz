@@ -10,4 +10,4 @@ In this challenge, I created a "Coding Quiz" around JavaScript fundamentals.
 
 https://jaredwoodcock.github.io/Coding-Quiz/
 
-![127 0 0 1_5500_index html](https://github.com/JaredWoodcock/Coding-Quiz/assets/144859311/de3567ac-5d68-41fa-aa71-8738c6d4bc28)
+![jaredwoodcock github io_Coding-Quiz_](https://github.com/JaredWoodcock/Coding-Quiz/assets/144859311/ebab0ab1-af9e-4a84-bba9-691bbb3c7d2a)
