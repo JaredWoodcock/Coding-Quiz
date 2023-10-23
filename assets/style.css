@@ -64,6 +64,7 @@ p {
     border-width: 4px;
     border-color: black;
     text-decoration: none;
+    color: black;
 }
 
 #view-high-scores:hover, #return-home:hover {
@@ -95,6 +96,8 @@ p {
     border: none;
     background-color: white;
     border-radius: 10px;
+    text-decoration: none;
+    color: black;
 }
 #options button:hover {
     cursor: pointer;
